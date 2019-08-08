@@ -126,7 +126,6 @@ rhel_main()
    echo ""
    echo "Runtime = $TIMESTAMP"
    echo ""
-   echo ""
 
    rhel_mon
 
