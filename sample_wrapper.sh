@@ -16,5 +16,5 @@
 #
 #########################################################################
 
-/home/jhipp/hippie_mon.sh --rhel |sendmail james.hipp@email.org
+/home/jhipp/hippie_mon.sh --rhel |/usr/sbin/sendmail james.hipp@email.org
 
