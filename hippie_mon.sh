@@ -20,11 +20,6 @@
 #
 # (See Help Function for Full Usage Notes)
 #
-# Sample Cron Setup:
-# [jhipp@gov-tic-sbox-hsrm temp]$ crontab -l
-# # James Test (Run this Hourly) = /path/to/hippie_mon.sh --rhel |sendmail james.hipp@email.org
-# 30 * * * * /path/to/hippie_mon.sh --rhel |sendmail james.hipp@email.org
-#
 #
 ### CHANGE LOG ###
 #
