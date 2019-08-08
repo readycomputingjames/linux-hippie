@@ -23,6 +23,7 @@
 #
 ### CHANGE LOG ###
 #
+# 20190808 = Converted this to run with multiples hosts using Hippie_Mon_DSSH
 #
 #########################################################################
 
@@ -149,7 +150,7 @@ main ()
 
    # This is in Case You are Using SendMail
    ### Ex: ./hippy_mond.sh --rhel |sendmail <email_address> ###
-   echo "Subject: Hippie-Mon Script Results for $HOSTNAME for $TIMESTAMP"
+   #echo "Subject: Hippie-Mon Script Results for $HOSTNAME for $TIMESTAMP"
 
    # Parse out CLI Argument to see what we Need to do
    case $INPUT_COMMAND1 in
