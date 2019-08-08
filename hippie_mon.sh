@@ -118,7 +118,7 @@ ubuntu_mon()
 rhel_main()
 {
 
-   # Main Function for Ubuntu Flag
+   # Main Function for RHEL/CentOS Flag
 
    echo ""
    echo "----------------------------------"
