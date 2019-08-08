@@ -117,9 +117,6 @@ rhel_main()
 
    rhel_mon
 
-   echo "####################"
-   echo ""
-
 }
 
 ubuntu_main()
