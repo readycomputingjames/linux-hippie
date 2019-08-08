@@ -20,7 +20,7 @@ hippie_mon_dssh ()
    do
       echo $HOST
       /bin/ssh -t -o ConnectTimeout=5 $HOST $INPUT_COMMAND
-      echo "____________________________________"
+      echo "####################################"
       echo ""
    done
 
