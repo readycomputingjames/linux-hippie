@@ -20,6 +20,11 @@
 #
 # (See Help Function for Full Usage Notes)
 #
+# Sample Cron Setup:
+# [jhipp@gov-tic-sbox-hsrm temp]$ crontab -l
+# # James Test (Run this Hourly) = /path/to/hippie_mon.sh --rhel |sendmail james.hipp@email.org
+# 30 * * * * /path/to/hippie_mon.sh --rhel |sendmail james.hipp@email.org
+#
 #
 ### CHANGE LOG ###
 #
@@ -29,6 +34,9 @@
 VERSION="1.00"
 
 INPUT_COMMAND1=$1
+
+TIMESTAMP=`date`
+HOSTNAME=`hostname`
 
 help_text()
 {
@@ -43,13 +51,13 @@ help_text()
    echo ""
    echo "Commands:"
    echo "--help = Show help notes for this script"
-   echo "--rhel = Run script for RHEL/CentOS 7+ platforms
-   echo "--ubuntu = Run script for Ubuntu platforms
+   echo "--rhel = Run script for RHEL/CentOS 7+ platforms"
+   echo "--ubuntu = Run script for Ubuntu platforms"
    echo "--version = Print out script version"
    echo ""
    echo "Examples:"
    echo "./hippie_mon.sh --rhel"
-   echo "./hippie_mon.sh --ubuntu
+   echo "./hippie_mon.sh --ubuntu"
    echo ""
 
 }
@@ -58,8 +66,47 @@ rhel_mon()
 {
 
    # Primary RHEL/CentOS Monitor Function
-   
-   echo "placeholder"
+
+   # Show Hostname and Version Details
+   echo "### Host Info ###"
+   echo ""
+   /usr/bin/hostnamectl |egrep -i "hostname|System|Kernel"
+
+   echo ""
+
+   # Show NTP Info
+   echo "### Server Time Info ###"
+   echo ""
+   /usr/bin/timedatectl |egrep -i "time|NTP"
+
+   echo ""
+
+   # Show Memory Utilization at this Point in Time
+   echo "### Memory Usage ###"
+   echo ""
+   /usr/bin/free -m
+   echo ""
+   echo "-> Percentage of RAM in Use: `/usr/bin/free -m |grep Mem |awk '{print $3/$2 * 100.0}'`"
+   echo ""
+   echo "-> Percentage of Swap in Use: `/usr/bin/free -m |grep Swap |awk '{print $3/$2 * 100.0}'`"
+
+   echo ""
+
+   # Show CPU Utilization at this Point in Time
+   echo "### CPU Utilization ###"
+   echo ""
+   /usr/bin/top -bn1 |grep -v KiB |head -n 16
+   echo "   .........."
+
+   echo ""
+
+   # Disk Space
+   echo "### Disk Space ###"
+   echo ""
+   /usr/bin/df -h |head -n 1
+   /usr/bin/df -h |sort -nr -k 5,5 |grep -v Avail
+
+   echo ""
 
 }
 
@@ -67,7 +114,7 @@ ubuntu_mon()
 {
 
    # Primary Ubuntu Monitor Function
-   
+
    echo "placeholder"
 
 }
@@ -76,25 +123,38 @@ rhel_main()
 {
 
    # Main Function for Ubuntu Flag
-   
-   echo "placeholder"
-   
+
+   echo ""
+   echo "----------------------------------"
+   echo "Gathering Monitor Performance Data"
+   echo "----------------------------------"
+   echo ""
+   echo "Runtime = $TIMESTAMP"
+   echo ""
+   echo ""
+
+   rhel_mon
+
 }
 
 ubuntu_main()
 {
 
    # Main Function for Ubuntu Flag
-   
+
    echo "placeholder"
-   
-   
+
+
 }
 
 main ()
 {
 
    # Main Function for Overall Script
+
+   # This is in Case You are Using SendMail
+   ### Ex: ./hippy_mond.sh --rhel |sendmail <email_address> ###
+   echo "Subject: Hippy-Mon Script Results for $HOSTNAME for $TIMESTAMP"
 
    # Parse out CLI Argument to see what we Need to do
    case $INPUT_COMMAND1 in
