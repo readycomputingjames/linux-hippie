@@ -120,7 +120,6 @@ rhel_main()
 
    # Main Function for Ubuntu Flag
 
-   echo ""
    echo "----------------------------------"
    echo "Gathering Monitor Performance Data"
    echo "----------------------------------"
