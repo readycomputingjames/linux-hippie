@@ -9,7 +9,7 @@
 # Sample Cron Setup:
 # [jhipp@test-server]$ crontab -l
 # # James Test (Run this Hourly)
-# 30 * * * * /path/to/hippie_mon_wrapper.sh
+# 30 * * * * /path/to/hippie_mon_wrapper.sh > /dev/null 2>&1
 #
 #
 #########################################################################
