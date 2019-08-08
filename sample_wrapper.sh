@@ -6,7 +6,7 @@
 #
 # Wrapper Script for Hippy-Mon to Send Email with Cron
 #
-# Main Command: /path/to/script.sh --rhel |sendmail <email_address>
+# Main Command: /path/to/hippie_mon.sh --rhel |sendmail <email_address>
 #
 # Sample Cron Setup:
 # [jhipp@test-box]$ crontab -l
@@ -16,5 +16,5 @@
 #
 #########################################################################
 
-/home/jhipp/hippie_mon.sh --rhel |/usr/sbin/sendmail james.hipp@email.org
+/path/to/hippie_mon.sh --rhel |/usr/sbin/sendmail james.hipp@email.org
 
