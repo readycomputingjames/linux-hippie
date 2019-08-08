@@ -1,23 +1,25 @@
 #!/bin/bash
 
-host_list_file=$1
-input_command=$2
+HOST_FILE=$1
+INPUT_COMMAND=$2
 
 HOSTNAME=`hostname`
 TIMESTAMP=`date`
 
-SUBJECT="Subject: Hippie-Mon Script Results for $HOSTNAME for $TIMESTAMP"
+SUBJECT="Subject: Hippie-Mon Script Results Executed from $HOSTNAME for $INPUT_COMMAND"
+
 
 hippie_mon_dssh ()
 {
 
    echo $SUBJECT
    echo ""
+   echo "Timestampe = $TIMESTAMP"
 
-   for HOST in `cat $host_list_file`
+   for HOST in `cat $HOST_FILE`
    do
       echo $HOST
-      /bin/ssh -t -o ConnectTimeout=5 $HOST $input_command
+      /bin/ssh -t -o ConnectTimeout=5 $HOST $INPUT_COMMAND
       echo "____________________________________"
       echo ""
    done
