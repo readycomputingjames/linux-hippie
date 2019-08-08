@@ -8,7 +8,6 @@ TIMESTAMP=`date`
 
 SUBJECT="Subject: Hippie-Mon Script Results Executed from $HOSTNAME for $HOST_FILE"
 
-
 hippie_mon_dssh ()
 {
 
