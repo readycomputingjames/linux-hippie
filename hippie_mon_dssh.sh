@@ -6,7 +6,7 @@ INPUT_COMMAND=$2
 HOSTNAME=`hostname`
 TIMESTAMP=`date`
 
-SUBJECT="Subject: Hippie-Mon Script Results Executed from $HOSTNAME for $INPUT_COMMAND"
+SUBJECT="Subject: Hippie-Mon Script Results Executed from $HOSTNAME for $HOST_FILE"
 
 
 hippie_mon_dssh ()
@@ -14,7 +14,8 @@ hippie_mon_dssh ()
 
    echo $SUBJECT
    echo ""
-   echo "Timestampe = $TIMESTAMP"
+   echo "Timestamp = $TIMESTAMP"
+   echo ""
 
    for HOST in `cat $HOST_FILE`
    do
